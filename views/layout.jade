@@ -1,7 +1,15 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    block content
+    head
+        title= title
+        link(rel='stylesheet', href='/css/main.css')
+        //- 页面样式
+        block stylesheet
+    body
+        //- 页面内容
+        block content
+        
+        script(src='/js/main.js')
+
+        //- 页面js
+        block javascript
