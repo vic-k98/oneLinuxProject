@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "testlog": "node ./webpack/multilple-config.js > ../testlog/console.log.js",
     "dev": "webpack --config ./webpack/webpack.config.js --watch"
   },
   "author": "",
