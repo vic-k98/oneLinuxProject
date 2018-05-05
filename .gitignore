@@ -6,4 +6,4 @@ node_modules
 ##############################
 ## Netbeans conf            ##
 ##############################
-www
+package-lock.json
