@@ -1,2 +1,3 @@
-console.log(7777777);
-console.log('wwerwer');
+import '../less/main.less';
+
+console.log('载入mainJS');
