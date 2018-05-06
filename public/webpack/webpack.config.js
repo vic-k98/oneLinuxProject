@@ -12,22 +12,21 @@ module.exports = {
         rules: [
             { 
                 test: /\.css$/,
-                use: [
-                    {loader: "css-loader"},
-                    {loader: "less-loader"}
-                ]
+                use: ExtractTextPlugin.extract('css-loader', 'style-loader')
             },
             { 
                 test: /\.less$/,
-                use: [
-                    {loader: "style-loader"},
-                    {loader: "css-loader"},
-                    {loader: "less-loader"}
-                ]
+                use: ExtractTextPlugin.extract('css-loader', 'style-loader', 'less-loader')
+            },
+            {
+                test: /\.(png|jpg)$/,
+                use: [{loader: 'url-loader?limit=8192&name=../img/[name].[ext]'}]
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin(path.resolve(__dirname, '../build/css/style.css'))
+        new ExtractTextPlugin({
+            filename: '../css/[name].css'
+        })
     ]
 }

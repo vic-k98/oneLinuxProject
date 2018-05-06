@@ -65,10 +65,21 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__less_index_less__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__less_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__less_index_less__);
+
+
+console.log('成功加载index.js');
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
-alert(12313123);
-alert(555);
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
