@@ -1,6 +1,7 @@
 const path = require('path');
 const multilpleConfig = require('./multilple-config.js');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: multilpleConfig.entries,
@@ -26,7 +27,8 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: '../css/[name].css'
-        })
+            filename: '../css/[name].mix.css'
+        }),
+        new UglifyJSPlugin()
     ]
 }
