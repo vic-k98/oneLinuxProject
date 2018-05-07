@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const multilpleConfig = require('./multilple-config.js');
 
 module.exports = (env) => {
@@ -15,6 +16,12 @@ module.exports = (env) => {
         new ExtractTextPlugin({
             filename: '../css/[name].mix.css'
         }),
+        new ImageminPlugin({
+            disable: env.development,
+            pngquant: {
+              quality: '95-100'
+            }
+        })
     ];
 
     if (env.development) {
