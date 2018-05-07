@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "testlog": "webpack --env.development --config ./webpack/webpack.watch.js > ../testlog/console.log.js",
-    "build": "webpack --config ./webpack/webpack.build.js",
-    "watch": "webpack --env.development --watch --config ./webpack/webpack.watch.js"
+    "testlog": "webpack --env.development --config ./webpack/webpack.config.js > ../testlog/console.log.js",
+    "build": "webpack --env.production --config ./webpack/webpack.config.js",
+    "watch": "webpack --env.development --watch --config ./webpack/webpack.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.2",

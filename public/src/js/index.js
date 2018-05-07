@@ -6,3 +6,4 @@
 import '../less/index.less';
 
 console.log('成功加载index.js');
+console.log('12313123');
