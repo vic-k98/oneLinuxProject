@@ -2,13 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const multilpleConfig = require('./multilple-config.js');
-// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: multilpleConfig.entries,
     output: {
         filename: '[name].mix.js',
-        path: path.resolve(__dirname, '../build/js')
+        path: path.resolve(__dirname, '../watch/js')
     },
     module: {
         rules: [

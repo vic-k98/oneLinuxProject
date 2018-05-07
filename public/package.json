@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "testlog": "node ./webpack/multilple-config.js > ../testlog/console.log.js",
-    "dev": "webpack --config ./webpack/webpack.config.js --watch"
+    "build": "webpack --config ./webpack/webpack.build.js",
+    "watch": "webpack --config ./webpack/webpack.watch.js --watch"
   },
   "author": "",
   "license": "ISC",
