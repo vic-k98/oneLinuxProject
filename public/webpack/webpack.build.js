@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const multilpleConfig = require('./multilple-config.js');
 
 module.exports = {
@@ -34,6 +35,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(['build'],{
+           root: path.resolve(__dirname, '../'),
+           exclude: []
+        }),
         new ExtractTextPlugin({
             filename: '../css/[name].mix.css'
         }),

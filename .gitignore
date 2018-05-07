@@ -8,3 +8,4 @@ testlog
 ## Netbeans conf            ##
 ##############################
 package-lock.json
+console.log.js
