@@ -2,14 +2,16 @@ doctype html
 html
     head
         title= title
-        link(rel='stylesheet', href='/css/main.mix.css')
+        link(rel="stylesheet", href="/css/main.mix.css")
         //- 页面样式
         block stylesheet
     body
+        .backgroundImg
+
         //- 页面内容
         block content
         
-        script(src='/js/main.mix.js')
+        script(src="/js/main.mix.js")
 
         //- 页面js
         block javascript
