@@ -1,7 +1,8 @@
 const path = require('path');
-const multilpleConfig = require('./multilple-config.js');
+const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const multilpleConfig = require('./multilple-config.js');
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: multilpleConfig.entries,
@@ -12,12 +13,20 @@ module.exports = {
     module: {
         rules: [
             { 
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract('css-loader', 'style-loader')
-            },
-            { 
-                test: /\.less$/,
-                use: ExtractTextPlugin.extract('css-loader', 'style-loader', 'less-loader')
+                test: /\.(css|less)$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: { minimize: true }
+                        },
+                        {
+                            loader: 'less-loader',
+                            options: { minimize: true }
+                        }
+                    ]
+                })
             },
             {
                 test: /\.(png|jpg)$/,
@@ -29,6 +38,10 @@ module.exports = {
         new ExtractTextPlugin({
             filename: '../css/[name].mix.css'
         }),
-        new UglifyJSPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
     ]
 }
