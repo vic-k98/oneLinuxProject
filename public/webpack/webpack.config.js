@@ -4,6 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const multilpleConfig = require('./multilple-config.js');
 
 module.exports = (env) => {
@@ -18,10 +19,20 @@ module.exports = (env) => {
         }),
         new ImageminPlugin({
             disable: env.development,
+            test: /\.(jpe?g|png|gif|svg)$/i,
             pngquant: {
-              quality: '95-100'
+                quality: '100',
+            },
+            jpegtran: {
+                progressive: true
             }
-        })
+        }),
+        new CopyWebpackPlugin([
+            { 
+                from: path.resolve(__dirname, '../src/image'),
+                to: path.resolve(__dirname, '../build/image')
+            }
+        ])
     ];
 
     if (env.development) {
