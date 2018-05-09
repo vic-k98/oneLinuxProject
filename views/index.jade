@@ -1,10 +1,14 @@
 extends layout
 
 block stylesheet
-    link(rel='stylesheet', href='/css/index.mix.css')
+    link(rel="stylesheet", href="/css/index.mix.css")
 
 block content
-    .index-main 我是index，
+    .indexMain
+        nav
+            a(href="www.baidu.com").logo
+            ul.navList
+                li.navItem Home
 
 block javascript
-    script(src='/js/index.mix.js')
+    script(src="/js/index.mix.js")

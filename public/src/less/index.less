@@ -3,8 +3,37 @@
  * 多页面样式 - index
  * ---------------------
  */
-.index-main {
-    height: 10000px;
-    // background: url('../img/GordesVillage_EN-AU12355056555_1920x1080.jpg');
-    background-size: 100%;
+.indexMain {
+    padding-top: 30px;
+    width: 1200px;
+    margin: 0 auto;
+
+    /* 导航栏 */
+    nav {
+        font-size: 0;
+        border-bottom: 1px solid #eee;
+
+        .logo {
+            display: inline-block;
+            vertical-align: top;
+            width: 150px;
+            height: 50px;
+            background: #c33;
+        }
+
+        .navList {
+            display: inline-block;
+            vertical-align: top;
+            width: 1050px;
+            background: rgba(255,255,255,0.6);
+
+            .navItem {
+                display: inline-block;
+                vertical-align: top;
+                width: 100px;
+                height: 50px;
+                cursor: pointer;
+            }
+        }
+    }
 }
