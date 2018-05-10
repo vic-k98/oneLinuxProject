@@ -7,8 +7,13 @@ html
         block stylesheet
     body
         .layoutBg
-            //- 页面内容
-            block content
+            .layoutBox
+                header.pageHeader
+
+                //- 子页面内容
+                block content
+
+                footer.pageHeader
         
         script(src="/js/main.mix.js")
 
