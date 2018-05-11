@@ -18,7 +18,7 @@ if (config.multiple && config.multiple.multipleFlag) {
         const folderName = dirnameFormat.substring(dirnameFormat.indexOf('src.js') + 6);
 
         if (folderName) {
-            entries[`${folderName}.${basename}`] = jsItem;
+            entries[`${basename}${folderName}`] = jsItem;
         } else {
             entries[basename] = jsItem;
         }

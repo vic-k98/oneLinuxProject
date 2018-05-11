@@ -32,7 +32,12 @@ module.exports = (env) => {
                 from: path.resolve(__dirname, '../src/image'),
                 to: path.resolve(__dirname, '../build/image')
             }
-        ])
+        ]),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'commons',
+            filename: '[name].mix.js',
+            minChunks: 4,
+        })
     ];
 
     if (env.development) {

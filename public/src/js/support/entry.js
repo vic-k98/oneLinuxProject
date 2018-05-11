@@ -4,9 +4,8 @@
  * ---------------------
  */
 import echarts from 'echarts';
-import '../lib/vintage.js';
-import '../less/support.less';
-
+import '../../lib/vintage.js';
+import '../../less/support/support.less';
 
 const myChart = echarts.init(document.getElementById('echartBox'), 'vintage');
 var dataBJ = [

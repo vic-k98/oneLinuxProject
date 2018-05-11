@@ -3,11 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'VIC' });
+    res.render('pages/index', { title: 'VIC' });
 });
 
 router.get('/support', function(req, res, next) {
-    res.render('support', { title: 'Support | ECharts' });
+    res.render('pages/support', { title: 'Support | ECharts' });
 });
 
 module.exports = router;
