@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const multilpleConfig = require('./multilple-config.js');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = (env) => {
     const configPlugin = [
@@ -37,7 +38,8 @@ module.exports = (env) => {
             name: 'commons',
             filename: '[name].mix.js',
             minChunks: 4,
-        })
+        }),
+        new VueLoaderPlugin()
     ];
 
     if (env.development) {
@@ -72,20 +74,36 @@ module.exports = (env) => {
                             {
                                 loader: 'css-loader',
                                 options: { minimize: true }
-                            },
-                            {
+                            },{
                                 loader: 'less-loader',
                                 options: { minimize: true }
                             }
                         ]
                     })
-                },
-                {
+                },{
+                    test: /\.vue$/,
+                    use: ['vue-loader']
+                },{
+                    test: /\.js$/,
+                    use: [
+                        {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['es2015']
+                            }
+                        }
+                    ],
+                },{
                     test: /\.(png|jpg)$/,
-                    use: [{loader: 'url-loader?limit=8192&name=../img/[name].[ext]'}]
+                    use: ['url-loader?limit=8192&name=../img/[name].[ext]']
                 }
             ]
         },
-        plugins: configPlugin
+        plugins: configPlugin,
+        resolve: {
+            alias: {
+                'vue': 'vue/dist/vue.js'
+            }
+        }
     }
 }
