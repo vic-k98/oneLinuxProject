@@ -1,10 +1,10 @@
-doctype html
-html
-    head
-        title= title
-        link(rel="stylesheet", href="/css/entry.support.mix.css")
-    body
-        .echartBox(id="echartBox")
+extends ../layout
 
-        script(src="/js/commons.mix.js")
-        script(src="/js/entry.support.mix.js")
+block stylesheet
+    link(rel="stylesheet", href="/css/entry.support.mix.css")
+
+block content
+    .echartBox(id="echartBox")
+
+block javascript
+    script(src="/js/entry.support.mix.js")

@@ -6,8 +6,4 @@ router.get('/', function(req, res, next) {
     res.render('pages/index', { title: 'VIC' });
 });
 
-router.get('/support', function(req, res, next) {
-    res.render('pages/support', { title: 'Support | ECharts' });
-});
-
 module.exports = router;
