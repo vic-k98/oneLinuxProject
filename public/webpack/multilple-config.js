@@ -5,17 +5,24 @@ const config = require('./config');
 // 多页面入口配置
 if (config.multiple && config.multiple.multipleFlag) {
     const jsEntryLibPath = config.multiple.jsEntryLib;
-    const jsEntriesFile = glob.sync(`${jsEntryLibPath}/**/*.js`);
+    const jsFile = glob.sync(`${jsEntryLibPath}/*.js`);
+    const jsFolderFile = glob.sync(`${jsEntryLibPath}/**/entry.js`);
+    const jsEntriesFile = jsFile.concat(jsFolderFile);
     const entries = {};
 
     jsEntriesFile.forEach(jsItem => {
         dirname = path.dirname(jsItem);//当前目录
         extname = path.extname(jsItem);//后缀
         basename = path.basename(jsItem, extname);//文件名
-        // pathname = path.join(dirname, basename);//文件路径
-        // const longKey = pathname.replace(/\\/g, '.');
-        // const key = longKey.substring(longKey.indexOf('src.js'));
-        entries[basename] = jsItem;
+        const dirnameFormat = dirname.replace(/(\\|\/)/g, '.');
+        const folderName = dirnameFormat.substring(dirnameFormat.indexOf('src.js') + 6);
+
+        if (folderName) {
+            entries[`${folderName}.${basename}`] = jsItem;
+        } else {
+            entries[basename] = jsItem;
+        }
+
     });
     module.exports = {
         entries: entries
