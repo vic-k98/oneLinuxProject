@@ -94,7 +94,7 @@ module.exports = (env) => {
                         }
                     ],
                 },{
-                    test: /\.(png|jpg)$/,
+                    test: /\.(gif|jpg|png|woff|svg|eot|ttf)$/,
                     use: ['url-loader?limit=8192&name=../img/[name].[ext]']
                 }
             ]
