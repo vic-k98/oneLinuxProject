@@ -35,7 +35,6 @@
   },
   "dependencies": {
     "echarts": "^4.1.0",
-    "element-ui": "^2.3.8",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   }
