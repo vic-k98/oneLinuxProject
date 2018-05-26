@@ -1,5 +1,7 @@
 <template>
-    <div>adfasdfdas</div>
+    <div>
+        asdfasdfasdfasfasdf
+    </div>
 </template>
 
 <script>

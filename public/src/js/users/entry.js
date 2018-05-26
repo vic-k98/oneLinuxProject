@@ -1,21 +1,12 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import App from './App.vue';
+import router from './router';
+import ElementUI from 'element-ui';
 
-// 组件引入
-import home from './home.vue';
+// 注册 element-ui 组件
+Vue.use(ElementUI, { size: 'smail' });
 
-// 注册组件
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-    routes: [
-        {
-            path: '/',
-            component: home,
-        }
-    ]
-});
-
-const App = new Vue({
+new Vue({
     router,
+    render: h => h(App)
 }).$mount('#usersApp');
