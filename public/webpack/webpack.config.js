@@ -62,7 +62,8 @@ module.exports = (env) => {
         entry: multilpleConfig.entries,
         output: {
             filename: '[name].mix.js',
-            path: path.resolve(__dirname, '../build/js')
+            path: path.resolve(__dirname, '../build/js'),
+            publicPath: '/js/'
         },
         module: {
             rules: [
