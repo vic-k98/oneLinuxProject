@@ -1,13 +1,17 @@
 <template>
-    <test class="x">
-        asdfafda
-    </test>
+    <div class="warper">
+        <v-head></v-head>
+    </div>
 </template>
 
 <script>
-export default {
-    
-}
+    import vHead from './Header.vue';
+
+    export default {
+        components: {
+            vHead
+        },
+    }
 </script>
 
 <style>

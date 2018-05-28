@@ -69,6 +69,7 @@ module.exports = (env) => {
             rules: [
                 { 
                     test: /\.(css|less)$/,
+                    exclude: /node_modules/,
                     use: ExtractTextPlugin.extract({
                         fallback: "style-loader",
                         use: [
@@ -83,9 +84,11 @@ module.exports = (env) => {
                     })
                 },{
                     test: /\.vue$/,
+                    exclude: /node_modules/,
                     use: ['vue-loader']
                 },{
                     test: /\.js$/,
+                    exclude: /node_modules/,
                     use: [
                         {
                             loader: 'babel-loader',
@@ -96,6 +99,7 @@ module.exports = (env) => {
                     ],
                 },{
                     test: /\.(gif|jpg|png|woff|svg|eot|ttf)$/,
+                    exclude: /node_modules/,
                     use: ['url-loader?limit=8192&name=../img/[name].[ext]']
                 }
             ]

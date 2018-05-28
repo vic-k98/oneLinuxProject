@@ -8,8 +8,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            // component: resolve => require(['../component/common/Home.vue'], resolve),
-            component: home
+            component: resolve => require(['../component/common/Home.vue'], resolve),
         },
     ]
 });
