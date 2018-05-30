@@ -69,7 +69,7 @@ module.exports = (env) => {
             rules: [
                 { 
                     test: /\.(css|less)$/,
-                    exclude: /node_modules/,
+                    // exclude: /node_modules/,
                     use: ExtractTextPlugin.extract({
                         fallback: "style-loader",
                         use: [
@@ -98,10 +98,14 @@ module.exports = (env) => {
                         }
                     ],
                 },{
-                    test: /\.(gif|jpg|png|woff|svg|eot|ttf)$/,
+                    test: /\.(gif|jpg|png)$/,
                     exclude: /node_modules/,
                     use: ['url-loader?limit=8192&name=../img/[name].[ext]']
-                }
+                },
+                {
+                    test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                    use: ['file-loader?name=../font/[name].[ext]']
+                },
             ]
         },
         plugins: configPlugin,
