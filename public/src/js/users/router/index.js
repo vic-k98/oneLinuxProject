@@ -8,7 +8,16 @@ export default new Router({
     routes: [
         {
             path: '/',
+            redirect: '/dashboard'
+        },{
+            path: '/',
             component: resolve => require(['../component/common/Home.vue'], resolve),
+            children: [
+                {
+                    path: '/index',
+                    component: { template: '<p>home page</p>' }
+                }
+            ]
         },
     ]
 });

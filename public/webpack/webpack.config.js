@@ -7,6 +7,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const multilpleConfig = require('./multilple-config.js');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (env) => {
     const configPlugin = [
@@ -56,6 +57,9 @@ module.exports = (env) => {
                 root: path.resolve(__dirname, '../'),
                 exclude: []
             }),
+        )
+        configPlugin.push(
+            new BundleAnalyzerPlugin(),
         )
     }
     return {

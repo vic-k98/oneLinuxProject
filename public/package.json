@@ -31,12 +31,14 @@
     "vue-loader": "^15.0.10",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.13.1"
   },
   "dependencies": {
     "echarts": "^4.1.0",
     "element-ui": "^2.3.9",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }
