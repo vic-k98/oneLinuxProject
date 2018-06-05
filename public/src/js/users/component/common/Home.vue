@@ -3,7 +3,10 @@
         <v-head></v-head>
         <v-sidebar></v-sidebar>
         <div class="content-box siteScroll" :class="{'content-collapse': $store.state.collapse}">
-            
+            <v-tags></v-tags>
+            <div class="content">
+
+            </div>
         </div>
     </div>
 </template>
@@ -11,11 +14,13 @@
 <script>
     import vHead from './Header.vue';
     import vSidebar from './Sidebar.vue';
+    import vTags from './Tags.vue';
 
     export default {
         components: {
             vHead,
-            vSidebar
+            vSidebar,
+            vTags
         },
     }
 </script>
@@ -35,5 +40,9 @@
         &.content-collapse {
             left: 65px;
         }
+    }
+
+    .content {
+        padding: 40px;
     }
 </style>
