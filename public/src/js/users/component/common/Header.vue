@@ -24,16 +24,16 @@
                 </div>
                 <!-- 用户头像 -->
                 <a class="user-avator" href="javascript:;">
-                    <img src="http://img4.imgtn.bdimg.com/it/u=2529469200,1162169902&fm=27&gp=0.jpg">
+                    <img :src="userheadimg">
                 </a>
                 <!-- 用户名下拉菜单 -->
-                <el-dropdown class="user-name" trigger="click">
+                <el-dropdown class="user-name" trigger="click" size="small">
                     <span class="el-dropdown-title">
-                        {{username}} <i class="el-icon-caret-bottom"></i>
+                        {{ username }} <i class="el-icon-caret-bottom"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>项目仓库</el-dropdown-item>
-                        <el-dropdown-item>关于作者</el-dropdown-item>
+                        <!-- <el-dropdown-item>项目仓库</el-dropdown-item>
+                        <el-dropdown-item>关于作者</el-dropdown-item> -->
                         <el-dropdown-item>退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
@@ -51,9 +51,11 @@
             }
         },
         computed:{
-            username(){
-                let username = localStorage.getItem('ms_username');
-                return username ? username : 'ADMIN';
+            username() {
+                return this.$store.state.userInfo.name || 'ADMIN';
+            },
+            userheadimg() {
+                return this.$store.state.userInfo.headImg || '/image/icon/head-man.png';
             }
         },
         methods: {

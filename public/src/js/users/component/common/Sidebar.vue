@@ -107,6 +107,9 @@
         height:100%;
     }
     .sidebar-el-menu:not(.el-menu--collapse){
-        width: 250px;
+        width: 180px;
+    }
+    .sidebar-el-menu .el-submenu .el-menu-item {
+        min-width: auto;
     }
 </style>

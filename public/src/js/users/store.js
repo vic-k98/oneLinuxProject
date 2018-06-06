@@ -5,6 +5,12 @@ Vue.use(vuex);
 
 export default new vuex.Store({
     state: {
-        collapse: false,     // 侧边栏折叠标识
+        // userInfo: {         // 用户状态信息
+        //     name: 'vic',
+        //     email: 'vic98k27149@gmail.com',
+        //     headImg: ''
+        // },
+        userInfo: null,
+        collapse: false,    // 侧边栏折叠标识
     },
 });

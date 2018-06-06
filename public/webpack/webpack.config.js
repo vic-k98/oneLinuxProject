@@ -109,12 +109,6 @@ module.exports = (env) => {
                 {
                     test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
                     use: ['file-loader?name=../font/[name].[ext]']
-                },{
-                    test: /\.pug$/,
-                    use: ['pug']
-                },{
-                    test: /\.jade$/,
-                    use: ['jade']
                 }
             ]
         },

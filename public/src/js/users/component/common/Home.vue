@@ -5,7 +5,7 @@
         <div class="content-box siteScroll" :class="{'content-collapse': $store.state.collapse}">
             <v-tags></v-tags>
             <div class="content">
-
+                
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
 <style lang="less">
     .content-box {
         position: absolute;
-        left: 250px;
+        left: 180px;
         right: 0;
         top: 70px;
         bottom: 0;
