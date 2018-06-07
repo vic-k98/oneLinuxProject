@@ -52,6 +52,7 @@
         },
         computed:{
             username() {
+                console.log(this.$store.state);
                 return this.$store.state.userInfo.name || 'ADMIN';
             },
             userheadimg() {

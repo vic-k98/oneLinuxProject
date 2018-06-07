@@ -13,7 +13,8 @@ module.exports = (env) => {
     const configPlugin = [
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: false
+                warnings: false,
+                drop_debugger: false,
             }
         }),
         new ExtractTextPlugin({
