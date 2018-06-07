@@ -5,7 +5,7 @@
         <div class="content-box siteScroll" :class="{'content-collapse': $store.state.collapse}">
             <v-tags></v-tags>
             <div class="content">
-                
+                <router-view></router-view>
             </div>
         </div>
     </div>

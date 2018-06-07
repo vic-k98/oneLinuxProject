@@ -49,15 +49,12 @@
             requiredLogin() { // 请求登陆验证
                 if (this.formData.username === 'vickkkk' && this.formData.password === '123456') { // 验证成功
                     this.tips = '';
-                    this.$store.state.userInfo = {
+                    sessionStorage.setItem('ms_userinfo', JSON.stringify({
                         name: this.formData.username,
                         email: 'vic98k27149@gmail.com',
                         headImg: 'http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg'
-                    }
-                    console.log(777);
-                    debugger;
-                    console.log(123123);
-                    // this.$router.push('/');
+                    }));
+                    this.$router.push('/');
                 } else { // 验证失败
                     this.tips = '用户名或密码错误';
                 }
