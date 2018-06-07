@@ -2,10 +2,16 @@
     <div class="warper">
         <v-head></v-head>
         <v-sidebar></v-sidebar>
-        <div class="content-box siteScroll" :class="{'content-collapse': $store.state.collapse}">
+        <div class="content-box" :class="{'content-collapse': $store.state.collapse}">
             <v-tags></v-tags>
-            <div class="content">
-                <router-view></router-view>
+            <div class="content siteScroll">
+                <div class="contentpanding">
+                    <transition name="move" mode="out-in">
+                        <keep-alive>
+                            <router-view></router-view>
+                        </keep-alive>
+                    </transition>
+                </div>
             </div>
         </div>
     </div>
@@ -32,7 +38,6 @@
         right: 0;
         top: 70px;
         bottom: 0;
-        overflow-y: scroll;
         -webkit-transition: left .3s ease-in-out;
         transition: left .3s ease-in-out;
         background: #f0f0f0;
@@ -41,8 +46,24 @@
             left: 65px;
         }
     }
-
     .content {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: scroll;
+    }
+    .contentpanding {
         padding: 40px;
+    }
+
+    .move-enter-active,
+    .move-leave-active {
+        transition: opacity .5s;
+    }
+    .move-enter,
+    .move-leave {
+        opacity: 0;
     }
 </style>

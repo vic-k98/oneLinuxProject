@@ -16,7 +16,7 @@ export default new Router({
             children: [
                 {
                     path: '/index',
-                    component: { template: '<p>home page</p>' },
+                    component: resolve => require(['../component/page/Index.vue'], resolve),
                     meta: { title: '系统首页' }
                 },{
                     path: '/table',
