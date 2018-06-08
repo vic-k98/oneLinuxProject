@@ -47,17 +47,30 @@
                 });
             },
             requiredLogin() { // 请求登陆验证
-                if (this.formData.username === 'vickkkk' && this.formData.password === '123456') { // 验证成功
-                    this.tips = '';
+                this.$http.post('/users/login', {
+                    username: this.formData.username,
+                    password: this.formData.password
+                }).then((res) => {
+                    // if (res.status === 200) {
+
+                    // }
                     sessionStorage.setItem('ms_userinfo', JSON.stringify({
                         name: this.formData.username,
                         email: 'vic98k27149@gmail.com',
                         headImg: 'http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg'
                     }));
                     this.$router.push('/');
-                } else { // 验证失败
-                    this.tips = '用户名或密码错误';
-                }
+                }).catch((res) => {
+                    // console.log(res);
+                });
+                return;
+                this.tips = '';
+                sessionStorage.setItem('ms_userinfo', JSON.stringify({
+                    name: this.formData.username,
+                    email: 'vic98k27149@gmail.com',
+                    headImg: 'http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg'
+                }));
+                this.$router.push('/');
             }
         }
     }

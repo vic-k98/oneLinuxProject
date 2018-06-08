@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store.js';
+import axios from 'axios';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';    // 默认主题
 
@@ -18,6 +19,8 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+
+Vue.prototype.$http = axios;
 
 new Vue({
     router,

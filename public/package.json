@@ -35,6 +35,7 @@
     "webpack-bundle-analyzer": "^2.13.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "echarts": "^4.1.0",
     "element-ui": "^2.3.9",
     "vue": "^2.5.16",
