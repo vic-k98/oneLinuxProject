@@ -86,6 +86,7 @@
         position: relative;
         height: 30px;
         background: #fff;
+        z-index: 2;
     }
     .tags ul {
         box-sizing: border-box;

@@ -48,14 +48,14 @@
     }
     .content {
         position: absolute;
-        top: 30px;
+        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         overflow-y: scroll;
     }
     .contentpanding {
-        padding: 40px;
+        padding: 50px 40px;
     }
 
     .move-enter-active,

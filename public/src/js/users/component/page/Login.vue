@@ -8,7 +8,7 @@
                 <el-form-item prop="password">
                     <el-input type="password" v-model="formData.password" placeholder="password"></el-input>
                 </el-form-item>
-                <el-button type="primary" class="login-btn" @click="submitForm('ruleForm')">登陆</el-button>
+                <el-button type="primary" class="login-btn" @click="submitForm('ruleForm')" :loading="loading">登陆</el-button>
                 <p class="login-tips" v-if="tips">Tips: {{ tips }}</p>
             </el-form>
         </div>
@@ -16,10 +16,12 @@
 </template>
 
 <script>
+    import $axios from '../../../common/http/handleAxios.js';
+
     export default {
         data() {
             return {
-                formData: { // 用户数据
+                formData: { // 用户默认数据
                     username: 'vickkkk',
                     password: '123456',
                 },
@@ -33,7 +35,8 @@
                         { min: 6, max: 18, message: '密码长度为 6 到 18 位', trigger: 'blur' }
                     ]
                 },
-                tips: '', // 错误提示语
+                loading: false,
+                tips: '',
             }
         },
         methods: {
@@ -47,31 +50,40 @@
                 });
             },
             requiredLogin() { // 请求登陆验证
-                this.$http.post('/users/login', {
-                    username: this.formData.username,
-                    password: this.formData.password
+                this.statesOption(1);
+                $axios({
+                    url: '/users/login',
+                    method: 'POST',
+                    data: {
+                        username: this.formData.username,
+                        password: this.formData.password
+                    }
                 }).then((res) => {
-                    // if (res.status === 200) {
-
-                    // }
-                    sessionStorage.setItem('ms_userinfo', JSON.stringify({
-                        name: this.formData.username,
-                        email: 'vic98k27149@gmail.com',
-                        headImg: 'http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg'
-                    }));
-                    this.$router.push('/');
-                }).catch((res) => {
-                    // console.log(res);
+                    if (res.code === 1) { // 登陆成功
+                        sessionStorage.setItem('ms_userinfo', JSON.stringify(res.data));
+                        this.$router.push('/');
+                    } else {
+                        this.statesOption(2, res.msg);
+                    }
+                }).catch(err => {
+                    this.statesOption(2, '网络错误');
                 });
-                return;
-                this.tips = '';
-                sessionStorage.setItem('ms_userinfo', JSON.stringify({
-                    name: this.formData.username,
-                    email: 'vic98k27149@gmail.com',
-                    headImg: 'http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg'
-                }));
-                this.$router.push('/');
-            }
+            },
+            statesOption(type, msg) {
+                switch(type) {
+                    case 1:
+                        this.tips = '';
+                        this.loading = true;
+                        break;
+                    case 2:
+                        this.tips = msg;
+                        this.loading = false;
+                        break;
+                    default:
+                        this.tips = '请求错误';
+                        this.loading = false;
+                }
+            },
         }
     }
 </script>
