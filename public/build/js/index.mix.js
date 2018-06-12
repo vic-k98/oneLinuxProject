@@ -1,1 +1,1 @@
-webpackJsonp([5],{272:function(o,n,c){"use strict";c(273),console.log("成功加载index.js"),console.log("12313123")},273:function(o,n){}},[272]);
+webpackJsonp([6],{260:function(o,n,c){"use strict";c(261),console.log("成功加载index.js"),console.log("12313123")},261:function(o,n){}},[260]);
