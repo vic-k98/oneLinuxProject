@@ -4,16 +4,16 @@
             :collapse="$store.state.collapse" :default-active="onRoutes" router
             background-color="#324157" text-color="#bfcbd9" active-text-color="#20a0ff">
             <template v-for="item in items">
-                <el-submenu v-if="item.subs" :index="item.index" :key="item.index">
+                <el-submenu v-if="item.subs && authValid(item)" :index="item.index" :key="item.index">
                     <template slot="title">
                         <i :class="item.icon"></i>
                         <span slot="title">{{ item.title }}</span>
                     </template>
-                    <el-menu-item v-for="(subItem, subIndex) in item.subs" :key="subIndex" :index="subItem.index">
+                    <el-menu-item v-for="(subItem, subIndex) in item.subs" v-if="authValid(subItem)" :key="subIndex" :index="subItem.index">
                         {{ subItem.title }}
                     </el-menu-item>
                 </el-submenu>
-                <el-menu-item v-else :index="item.index" :key="item.index">
+                <el-menu-item v-else-if="authValid(item)" :index="item.index" :key="item.index">
                     <i :class="item.icon"></i>
                     <span slot="title">{{ item.title }}</span>
                 </el-menu-item>
@@ -100,6 +100,11 @@
                 return this.$route.path.replace('/','');
             },
         },
+        methods: {
+            authValid(item) {
+                return item.auth ? (item.auth <= (this.$store.state.userInfo ? this.$store.state.userInfo.auth : 0)) : true;
+            }
+        }
     }
 </script>
 

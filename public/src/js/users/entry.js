@@ -15,6 +15,8 @@ router.beforeEach((to, from, next) => {
     const role = store.state.userInfo;
     if (!role && to.path !== '/login') {
         next('/login');
+    } else if (role && to.path === '/login') {
+        next('/index');
     } else if (to.meta.auth) { // 判断是否需要验证权限
         role.auth >= to.meta.auth ? next() : next('/403');
     } else {

@@ -14,22 +14,22 @@
                     </el-tooltip>
                 </div>
                 <!-- 消息中心 -->
-                <div class="bell-btn">
+                <!-- <div class="bell-btn">
                     <el-tooltip effect="light" :content="message ? `有${message}条未读消息` :`消息中心` " placement="bottom">
                         <i class="el-icon-bell"></i>
-                        <!-- <router-link to="/tabs">
-                        </router-link> -->
+                        <router-link to="/tabs">
+                        </router-link>
                     </el-tooltip>
                     <span class="bell-badge" v-if="message"></span>
-                </div>
+                </div> -->
                 <!-- 用户头像 -->
                 <a class="user-avator" href="javascript:;">
-                    <img :src="$store.state.userInfo ? $store.state.userInfo.headImg || '/image/icon/head-man.png' : ''">
+                    <img :src="userheading">
                 </a>
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" size="small" @command="headCommand">
                     <span class="el-dropdown-title">
-                        {{ $store.state.userInfo ? $store.state.userInfo.name || 'ADMIN' : '' }} <i class="el-icon-caret-bottom"></i>
+                        {{ username }} <i class="el-icon-caret-bottom"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item command="logout">退出登录</el-dropdown-item>
@@ -46,6 +46,14 @@
             return {
                 fullscreen: false,  // 是否处于全屏标示
                 message: 2,         // 未读消息数
+            }
+        },
+        computed: {
+            username() {
+                return this.$store.state.userInfo ? this.$store.state.userInfo.name || 'ADMIN' : '';
+            },
+            userheading() {
+                return this.$store.state.userInfo ? this.$store.state.userInfo.headImg || '/image/icon/head-man.png' : '';
             }
         },
         methods: {
