@@ -92,9 +92,11 @@
         box-sizing: border-box;
         width: 100%;
         height: 100%;
+        white-space: nowrap;
+        overflow: hidden;
     }
     .tags-li {
-        float: left;
+        display: inline-block;
         margin: 3px 5px 2px 3px;
         padding: 0 5px 0 12px;
         border: 1px solid #e9eaec;

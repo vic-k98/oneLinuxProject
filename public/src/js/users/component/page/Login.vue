@@ -22,8 +22,8 @@
         data() {
             return {
                 formData: { // 用户默认数据
-                    username: 'vickkkk',
-                    password: '123456',
+                    username: '',
+                    password: '',
                 },
                 rules: { // 表单校验规则
                     username: [

@@ -23,7 +23,7 @@ export default new Router({
                     meta: { title: '基础表格' }
                 },{
                     path: '/manage',
-                    component: { template: '<p>表格</p>'},
+                    component: resolve => require(['../component/page/Manage.vue'], resolve),
                     meta: { title: '用户管理' , auth: 10 }
                 },{
                     path: '/setting',
