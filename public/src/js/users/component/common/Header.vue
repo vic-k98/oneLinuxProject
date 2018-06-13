@@ -59,8 +59,7 @@
         methods: {
             headCommand(command) { // 用户下拉设置
                 if (command === 'logout') { // 推出登陆
-                    sessionStorage.removeItem('ms_userinfo');
-                    this.$store.commit('setUserInfo', null);
+                    this.$cookie.delCookie('isLogin');
                     this.$router.push('/login');
                 }
             },

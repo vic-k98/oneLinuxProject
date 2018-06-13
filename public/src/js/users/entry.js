@@ -4,6 +4,7 @@ import router from './router';
 import store from './store.js';
 import axios from 'axios';
 import ElementUI from 'element-ui';
+import cookie from '../common/Cookie.js';
 import 'element-ui/lib/theme-chalk/index.css';    // 默认主题
 
 // 注册 element-ui 组件
@@ -11,7 +12,11 @@ Vue.use(ElementUI, { size: 'smail' });
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
-    if (!store.state.userInfo) store.commit('setUserInfo', JSON.parse(sessionStorage.getItem('ms_userinfo')));
+    if (!cookie.getCookie('isLogin')) { // cookie 过期清除登陆用户信息
+        localStorage.removeItem('ms_userinfo');
+        store.commit('setUserInfo', null);
+    }
+    if (!store.state.userInfo) store.commit('setUserInfo', JSON.parse(localStorage.getItem('ms_userinfo')));
     const role = store.state.userInfo;
     if (!role && to.path !== '/login') {
         next('/login');
@@ -24,8 +29,9 @@ router.beforeEach((to, from, next) => {
     }
 });
 
-// http拦截器挂载全局
+// 外载方法挂载到Vue
 Vue.prototype.$http = axios;
+Vue.prototype.$cookie = cookie;
 
 new Vue({
     router,

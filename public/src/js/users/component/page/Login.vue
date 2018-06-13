@@ -60,8 +60,9 @@
                     }
                 }).then((res) => {
                     if (res.code === 1) { // 登陆成功
-                        sessionStorage.setItem('ms_userinfo', JSON.stringify(res.data));
-                        this.$store.commit('setUserInfo', JSON.parse(sessionStorage.getItem('ms_userinfo')));
+                        localStorage.setItem('ms_userinfo', JSON.stringify(res.data));
+                        this.$store.commit('setUserInfo', res.data);
+                        this.$cookie.setCookie('isLogin', true, 7);
                         this.$router.push('/');
                     } else {
                         this.statesOption(2, res.msg);
