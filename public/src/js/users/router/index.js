@@ -21,6 +21,14 @@ export default new Router({
                     path: '/table',
                     component: { template: '<p>表格</p>'},
                     meta: { title: '基础表格' }
+                },{
+                    path: '/manage',
+                    component: { template: '<p>表格</p>'},
+                    meta: { title: '用户管理' , auth: 10 }
+                },{
+                    path: '/setting',
+                    component: { template: '<p>表格</p>'},
+                    meta: { title: '系统设置' , auth: 5 }
                 }
             ]
         },{

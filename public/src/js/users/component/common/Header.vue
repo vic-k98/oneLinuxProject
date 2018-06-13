@@ -24,12 +24,12 @@
                 </div>
                 <!-- 用户头像 -->
                 <a class="user-avator" href="javascript:;">
-                    <img :src="userheadimg">
+                    <img :src="$store.state.userInfo ? $store.state.userInfo.headImg || '/image/icon/head-man.png' : ''">
                 </a>
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" size="small" @command="headCommand">
                     <span class="el-dropdown-title">
-                        {{ username }} <i class="el-icon-caret-bottom"></i>
+                        {{ $store.state.userInfo ? $store.state.userInfo.name || 'ADMIN' : '' }} <i class="el-icon-caret-bottom"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item command="logout">退出登录</el-dropdown-item>
@@ -48,18 +48,11 @@
                 message: 2,         // 未读消息数
             }
         },
-        computed:{
-            username() {
-                return this.$store.state.userInfo.name || 'ADMIN';
-            },
-            userheadimg() {
-                return this.$store.state.userInfo.headImg || '/image/icon/head-man.png';
-            }
-        },
         methods: {
             headCommand(command) { // 用户下拉设置
                 if (command === 'logout') { // 推出登陆
                     sessionStorage.removeItem('ms_userinfo');
+                    this.$store.commit('setUserInfo', null);
                     this.$router.push('/login');
                 }
             },
@@ -158,6 +151,7 @@
         cursor: default;
     }
     .user-avator img{
+        background: #fff;
         width: 100%;
         height: 100%;
     }

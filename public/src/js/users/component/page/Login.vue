@@ -61,6 +61,7 @@
                 }).then((res) => {
                     if (res.code === 1) { // 登陆成功
                         sessionStorage.setItem('ms_userinfo', JSON.stringify(res.data));
+                        this.$store.commit('setUserInfo', JSON.parse(sessionStorage.getItem('ms_userinfo')));
                         this.$router.push('/');
                     } else {
                         this.statesOption(2, res.msg);
@@ -93,8 +94,6 @@
         position: relative;
         width: 100%;
         height: 100%;
-        // background: url('../../../../bgImg/usersBg.jpg') no-repeat center;
-        // background-size: cover;
         background: #324157;
     }
     .login-content {

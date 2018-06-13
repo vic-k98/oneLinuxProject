@@ -11,15 +11,18 @@ Vue.use(ElementUI, { size: 'smail' });
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
-    store.state.userInfo = store.state.userInfo || JSON.parse(sessionStorage.getItem('ms_userinfo'));
+    if (!store.state.userInfo) store.commit('setUserInfo', JSON.parse(sessionStorage.getItem('ms_userinfo')));
     const role = store.state.userInfo;
     if (!role && to.path !== '/login') {
         next('/login');
+    } else if (to.meta.auth) { // 判断是否需要验证权限
+        role.auth >= to.meta.auth ? next() : next('/403');
     } else {
         next();
     }
 });
 
+// http拦截器挂载全局
 Vue.prototype.$http = axios;
 
 new Vue({

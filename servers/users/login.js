@@ -25,6 +25,7 @@ module.exports = (req, res, next) => {
                     name: data[0].name,
                     email: data[0].email,
                     headImg: data[0].headimg,
+                    auth: data[0].auth,
                 }
             }
         }
